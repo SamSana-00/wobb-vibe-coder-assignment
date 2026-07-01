@@ -1,21 +1,25 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import type { Platform } from "@/types";
 import { Layout } from "@/components/Layout";
 import { PlatformFilter } from "@/components/PlatformFilter";
 import { ProfileList } from "@/components/ProfileList";
+import { Shortlist } from "@/components/Shortlist";
 import { extractProfiles, filterProfiles } from "@/utils/dataHelpers";
 
 export function SearchPage() {
   const [platform, setPlatform] = useState<Platform>("instagram");
   const [searchQuery, setSearchQuery] = useState("");
-  const [clickCount, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0);
 
   const allProfiles = extractProfiles(platform);
   const filtered = filterProfiles(allProfiles, searchQuery);
 
   const handleProfileClick = (username: string) => {
-    setClickCount(clickCount + 1);
-    console.log("Clicked profile:", username, "total clicks:", clickCount);
+    setClickCount((prev) => {
+      const next = prev + 1;
+      console.log("Clicked profile:", username, "total clicks:", next);
+      return next;
+    });
   };
 
   return (
@@ -44,6 +48,8 @@ export function SearchPage() {
         searchQuery={searchQuery}
         onProfileClick={handleProfileClick}
       />
+
+      <Shortlist />
     </Layout>
   );
 }
