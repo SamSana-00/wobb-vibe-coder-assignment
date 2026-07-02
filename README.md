@@ -3,7 +3,7 @@
 A redesigned influencer search application built with React, TypeScript, Vite, and Tailwind CSS.
 
 ## Live Demo
-<!-- Add Vercel URL here after deployment -->
+https://wobb-vibe-coder-assignment-sana8.vercel.app
 
 ## What I Changed
 
